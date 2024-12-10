@@ -17,4 +17,21 @@ function getHumanChoice(){
     return humanChoice;
 }
 
-console.log(getHumanChoice());
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice){
+    if (humanChoice == computerChoice){
+        alert("its a tie");
+        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
+    }
+    else if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
+        alert("Player wins");
+        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
+    }
+    else{
+        alert("Computer wins");
+        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
+    }
+
+}
