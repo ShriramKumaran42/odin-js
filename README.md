@@ -1,2 +1,2 @@
 # odin-js
-This Repository consists of the assignment given by The Odin project as for the javascript level in the foundation course. This project is made with the knowledge and skills gained so far in this course.
+This Repository consists of the assignment given by The Odin project as for the javascript level in the foundation course. This project is made with the knowledge and skills gained so far in this foundation course.
