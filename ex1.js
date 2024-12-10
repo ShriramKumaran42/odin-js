@@ -12,4 +12,9 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-console.log(getComputerChoice())
+function getHumanChoice(){
+    let humanChoice = String(prompt("Player pleas insert your input Rock , Paper , Scissors.")).toLowerCase();
+    return humanChoice;
+}
+
+console.log(getHumanChoice());
