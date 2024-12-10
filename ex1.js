@@ -13,7 +13,17 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let humanChoice = String(prompt("Player pleas insert your input Rock , Paper , Scissors.")).toLowerCase();
+    let humanChoice;
+    while(true){
+        humanChoice = String(prompt("Player enter your choice below Rock , Paper , Scissors.")).toLowerCase();
+        if(humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors"){
+            break;
+        }
+        else{
+            alert("invalid choice, try agin");
+            console.log("Wrong input by player");
+        }
+    }
     return humanChoice;
 }
 
@@ -26,13 +36,13 @@ function playRound(humanChoice, computerChoice){
         console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
     }
     else if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
-        alert("Player wins");
+        alert("Player wins this round");
         humanScore++;
         console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
         
     }
     else{
-        alert("Computer wins");
+        alert("Computer wins this round");
         computerScore++;
         console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
     }
@@ -50,11 +60,11 @@ function playGame(){
         console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
     }
     else if(humanScore > computerScore){
-        alert("Player Wins");
+        alert("Player Wins,  Congratulations");
         console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
     }
     else{
-        alert("Computer Wins");
+        alert("Computer Wins, Congratulations");
         console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
     }
 }
