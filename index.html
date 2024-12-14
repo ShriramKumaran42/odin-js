@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="ex1.js" defer></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>Rock , Paper , Scissors</h1>
+    <h1>Score</h1>
+    <div class="scoreBoard">
+        <h2>Player 1 | <span id="playerScore">0</span> || <span id="compScore">0</span> | Comp.</h2>
+    </div>
+
     <div class="options">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
-    <div class="results">
-        
+    <div class="resultDiv">
+        <h2 class="result"></h2>
     </div>
+    
     
 </body>
 </html>

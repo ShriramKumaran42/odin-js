@@ -16,6 +16,18 @@ const getHumanChoice = {
     humanChoice: ""
 }
 
+const humanScoreDisp = document.querySelector("#playerScore");
+const compScoreDisp = document.querySelector("#compScore");
+function updateScore(){
+    humanScoreDisp.textContent = humanScore;
+    compScoreDisp.textContent = computerScore;
+}
+
+const resultDisp =  document.querySelector(".result");
+function resultText(msg){
+    resultDisp.textContent = msg;
+}
+
 const playBtn = document.querySelector(".options");
 playBtn.addEventListener("click", (newEvent) =>{
     let target = newEvent.target;
@@ -48,55 +60,64 @@ function playRound(humanChoice){
     console.log(`Player : ${humanChoice} | Computer : ${computerChoice}`);
 
     if (humanChoice == computerChoice){
-        alert("its a tie");
+        resultText("its a tie");
         
     }
     else if(humanChoice == "rock" && computerChoice == "scissors" || 
             humanChoice == "paper" && computerChoice == "rock" || 
             humanChoice == "scissors" && computerChoice == "paper"){
-        alert("Player wins this round");
+        resultText("Player wins this round");
         humanScore++;
         
     }
     else{
-        alert("Computer wins this round");
+        resultText("Computer wins this round");
         computerScore++;
         
     }
     console.log(`So far the score is Player : ${humanScore},  Computer : ${computerScore}.`);
 
+    updateScore();
     if(humanScore + computerScore === 5){
         playStop();
     }
     
 }
 
+
+
 function playStop(){
     // if(getHumanChoice.humanChoice === ""){
     //     alert("Please select your move")
     //     return;
     // }
+    // const result = document.querySelector(".results");
+    // const para = document.querySelector("p");
+    // para.textContent = `${humanScore}`
+    // result.appendChild(para);
+
     if(humanScore == computerScore){
-        alert("The Scores are Tied");
+        resultText("The Scores are Tied");
         
     }
     else if(humanScore > computerScore){
-        alert("Player Wins,  Congratulations");
+        resultText("Player Wins,  Congratulations");
         
     }
     else{
-        alert("Computer Wins, Congratulations");
+        resultText("Computer Wins, Congratulations");
         
     }
 
     console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
 
+
+    
+
     humanScore = 0;
     computerScore = 0;
     getHumanChoice.humanChoice = "";
+    
     alert ("Game over, play again")
 }
-
-const result = document.querySelector(".results");
-
 
