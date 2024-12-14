@@ -12,60 +12,91 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-function getHumanChoice(){
-    let humanChoice;
-    while(true){
-        humanChoice = String(prompt("Player enter your choice below Rock , Paper , Scissors.")).toLowerCase();
-        if(humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors"){
-            break;
-        }
-        else{
-            alert("invalid choice, try agin");
-            console.log("Wrong input by player");
-        }
-    }
-    return humanChoice;
+const getHumanChoice = {
+    humanChoice: ""
 }
+
+const playBtn = document.querySelector(".options");
+playBtn.addEventListener("click", (newEvent) =>{
+    let target = newEvent.target;
+    if (target.tagName === "BUTTON"){
+        switch(target.id){
+            case "rock":
+                
+                getHumanChoice.humanChoice = "rock";
+                break;
+
+            case "paper":
+                
+                getHumanChoice.humanChoice = "paper";
+                break;
+            case "scissors":
+                
+                getHumanChoice.humanChoice = "scissors";
+                break;    
+        }
+        playRound(getHumanChoice.humanChoice);
+    }
+});
+
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice){
+    let computerChoice = getComputerChoice();
+    console.log(`Player : ${humanChoice} | Computer : ${computerChoice}`);
+
     if (humanChoice == computerChoice){
         alert("its a tie");
-        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
+        
     }
-    else if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
+    else if(humanChoice == "rock" && computerChoice == "scissors" || 
+            humanChoice == "paper" && computerChoice == "rock" || 
+            humanChoice == "scissors" && computerChoice == "paper"){
         alert("Player wins this round");
         humanScore++;
-        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
         
     }
     else{
         alert("Computer wins this round");
         computerScore++;
-        console.log(`So far the score is Player: ${humanScore} , Computer: ${computerScore} .`);
+        
     }
+    console.log(`So far the score is Player : ${humanScore},  Computer : ${computerScore}.`);
 
+    if(humanScore + computerScore === 5){
+        playStop();
+    }
+    
 }
 
-function playGame(){
-    for(let count = 1; count < 6 ; count++){
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-    }
+function playStop(){
+    // if(getHumanChoice.humanChoice === ""){
+    //     alert("Please select your move")
+    //     return;
+    // }
     if(humanScore == computerScore){
         alert("The Scores are Tied");
-        console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
+        
     }
     else if(humanScore > computerScore){
         alert("Player Wins,  Congratulations");
-        console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
+        
     }
     else{
         alert("Computer Wins, Congratulations");
-        console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
+        
     }
+
+    console.log(`The Final Score is Player: ${humanScore} , Computer: ${computerScore} . `);
+
+    humanScore = 0;
+    computerScore = 0;
+    getHumanChoice.humanChoice = "";
+    alert ("Game over, play again")
 }
-playGame();
+
+const result = document.querySelector(".results");
+
+
